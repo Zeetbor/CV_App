@@ -4,6 +4,7 @@ class ExperienceFormItem extends Component {
   render(){
     return (
       <div>
+      <fieldset>
         <label>Position</label><br/>
         <input></input><br/>
         <label>Company Name</label><br/>
@@ -14,6 +15,9 @@ class ExperienceFormItem extends Component {
         <input></input><br/>
         <label>To</label><br/>
         <input></input>
+        </fieldset>
+        <button>Add</button>
+        <button>Remove</button>
       </div>
     )
   }

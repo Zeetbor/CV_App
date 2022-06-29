@@ -3,10 +3,26 @@ import ExperienceFormItem from "./ExperienceFormItem";
 
 
 class Experience extends Component {
+  constructor(props){
+    super(props)
+
+  }
+
+
+  handleRemoveExp = (e) => {
+    e.preventDefault();
+  }
+
+
   render() {
+
+    const { experienceChange, experience } = this.props;
     return (
       <div>
-        <ExperienceFormItem />
+        <ExperienceFormItem
+          experienceChange={this.handleExperienceChange}
+          experience={experience}
+        />
       </div>
     )
   }

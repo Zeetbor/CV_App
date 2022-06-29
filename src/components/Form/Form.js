@@ -9,20 +9,31 @@ class Form extends Component {
 
   };
   render() {
-    const {inputChange, firstName} = this.props;
+    const {inputChange, experienceChange, firstName, lastName, email, phone, city, role, summary, experience, education} = this.props;
 
     return (
-      <div>Form
+      <div>
         <form>
           <h2>Personal Information</h2>
           <PersonalInfo
             inputChange={inputChange}
             firstName={firstName}
+            lastName={lastName}
+            role={role}
+            city={city}
+            email={email}
+            phone={phone}
+            summary={summary}
           />
           <h2>Experience</h2>
-          <Experience />
+          <Experience
+            experienceChange={this.experienceChange}
+            experience={this.experience}
+          />
           <h2>Education</h2>
-          <Education />
+          <Education
+            education={this.education}
+          />
         </form>
         <button type="submit">Confirm</button>
       </div>

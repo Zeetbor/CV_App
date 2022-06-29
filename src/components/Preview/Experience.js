@@ -4,8 +4,11 @@ import ExperiencePreviewItem from "./ExperiencePreviewItem";
 
 class Experience extends Component {
   render() {
+    
+
     return (
-      <div>Experience
+      <div>
+        <h2>Experience</h2>
         <ExperiencePreviewItem />
       </div>
     )
