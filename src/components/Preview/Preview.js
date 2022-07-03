@@ -4,24 +4,23 @@ import Experience from "./Experience.js"
 import Education from "./Education.js"
 
 class Preview extends Component {
-  constructor(props){
-    super(props);
-
-  }
+  // constructor(props){
+  //   super(props);
+  //   console.log("preview",props)
+  // }
 
   render() {
-    const { inputChange, firstName, lastName, role, email, phone, city, summary } = this.props;
+    const { inputChange, firstName, lastName, role, email, phone, city, summary, experience } = this.props;
 
     return (
       <div>
         <h2>{firstName} {lastName}</h2>
         <div className="row">
         <div className="column">
-          <Experience />
+          <Experience experience={experience}/>
           <Education />
         </div>
           <div className="column">
-            
 
             <PersonalInfo
             inputChange={inputChange}

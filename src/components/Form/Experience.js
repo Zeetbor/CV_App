@@ -5,24 +5,27 @@ import ExperienceFormItem from "./ExperienceFormItem";
 class Experience extends Component {
   constructor(props){
     super(props)
-
   }
-
 
   handleRemoveExp = (e) => {
     e.preventDefault();
   }
 
-
   render() {
-
-    const { experienceChange, experience } = this.props;
+    const { experienceChange, experience, addExperience, removeExperience } = this.props;
+    const experienceItems = experience.map((exp) => {
+      return <ExperienceFormItem
+        key={exp.id}
+        id={exp.id}
+        experienceChange={experienceChange}
+        experience={experience}
+        removeExperience={removeExperience}
+      />
+    })
     return (
       <div>
-        <ExperienceFormItem
-          experienceChange={this.handleExperienceChange}
-          experience={experience}
-        />
+        {experience.length > 0 ? experienceItems : ""}
+        <button type="button" onClick={addExperience}>Add</button>
       </div>
     )
   }

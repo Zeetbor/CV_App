@@ -18,9 +18,16 @@ class Main extends Component {
         summary: 'Bob the builder, can he fix it? Yes he can!'
       },
       experience: [
-        // school: "hello"
+        {
+          id: "1g72oafvb0bdfa96c05a4ef",
+          position: "Builder",
+          company: "Build Inc",
+          city: "Buildsville",
+          from: "May 2014",
+          to: "Present"
+        },
       ],
-      eduction: []
+      education: []
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -35,9 +42,52 @@ class Main extends Component {
 
   handleExperienceChange = (e, id) => {
     const { name, value } = e.target;
-    const experience = {...this.state.experience};
-    console.log(name, value, id)
+    const prevState = {...this.state}
+    const experience = prevState.experience.map((exp) => {
+      if(exp.id === id){
+        return  {...exp, [name]: value}
+      }
+      return exp;
+    })
+    this.setState({
+      experience
+    })
   }
+
+  handleAddExperience = () => {
+    const prevState = {...this.state};
+    this.setState({
+      prevState,
+      experience: [
+        ...prevState.experience,
+        {
+          id: this.uid(),
+          position: "",
+          company: "",
+          city: "",
+          from: "",
+          to: ""
+        }
+      ]
+    })
+  }
+
+  handleRemoveExp = (id) => {
+    const prevState = {...this.state}
+    const newExp = prevState.experience.filter(
+      (exp) => exp.id !== id
+    )
+    this.setState({
+      ...prevState, experience: [newExp]
+    })
+  }
+
+  uid = () =>
+  String(
+    Date.now().toString(32) +
+      Math.random().toString(16)
+  ).replace(/\./g, '');
+
 
   render(){
     const {firstName, lastName, role, email, phone, city, summary} = this.state.personalInfo;
@@ -45,10 +95,12 @@ class Main extends Component {
     return (
       <main>
         <div className="row">
-          <div className="column">
+          <div className="column" id="formCol">
             <Form
               inputChange={this.handleInputChange}
               experienceChange={this.handleExperienceChange}
+              addExperience={this.handleAddExperience}
+              removeExperience={this.handleRemoveExp}
               firstName={firstName}
               lastName={lastName}
               role={role}
@@ -60,10 +112,8 @@ class Main extends Component {
               education={education}
             />
           </div>
-          <div className="column">
+          <div className="column" id="prevCol">
             <Preview
-              inputChange={this.handleInputChange}
-              experienceChange={this.handleExperienceChange}
               firstName={firstName}
               lastName={lastName}
               role={role}

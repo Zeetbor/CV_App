@@ -9,7 +9,21 @@ class Form extends Component {
 
   };
   render() {
-    const {inputChange, experienceChange, firstName, lastName, email, phone, city, role, summary, experience, education} = this.props;
+    const {
+      inputChange,
+      experienceChange,
+      firstName,
+      lastName,
+      email,
+      phone,
+      city,
+      role,
+      summary,
+      experience,
+      education,
+      addExperience,
+      removeExperience
+    } = this.props;
 
     return (
       <div>
@@ -27,8 +41,10 @@ class Form extends Component {
           />
           <h2>Experience</h2>
           <Experience
-            experienceChange={this.experienceChange}
-            experience={this.experience}
+            experienceChange={experienceChange}
+            experience={experience}
+            addExperience={addExperience}
+            removeExperience={removeExperience}
           />
           <h2>Education</h2>
           <Education
