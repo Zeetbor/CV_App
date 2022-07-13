@@ -14,8 +14,8 @@ class ExperiencePreviewItem extends Component {
         {position}<br/>
         {company}<br/>
         {city}<br/>
-        {from} -<br/>
-        {to}<br/>
+        {from} - {to}<br/>
+        <hr/>
       </div>
     )
   }

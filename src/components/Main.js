@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import Form from "./Form/Form.js";
 import Preview from "./Preview/Preview.js";
+// import "../styles/reset.css"
+import "../styles/main.css"
 
 
 class Main extends Component {
@@ -23,11 +25,21 @@ class Main extends Component {
           position: "Builder",
           company: "Build Inc",
           city: "Buildsville",
-          from: "May 2014",
+          from: "August 1997",
           to: "Present"
         },
       ],
-      education: []
+      education: [
+        {
+          id: "1g72oafvb0bdfa96c05a4eg",
+          university: "UCL",
+          city: "London",
+          degree: "Building Studies",
+          grade: "First Class",
+          from: "Sept 1994",
+          to: "July 1997"
+        }
+      ]
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -55,9 +67,9 @@ class Main extends Component {
   }
 
   handleAddExperience = () => {
-    const prevState = {...this.state};
+    const prevState = this.state;
     this.setState({
-      prevState,
+      ...prevState,
       experience: [
         ...prevState.experience,
         {
@@ -73,13 +85,60 @@ class Main extends Component {
   }
 
   handleRemoveExp = (id) => {
-    const prevState = {...this.state}
+    const prevState = this.state
     const newExp = prevState.experience.filter(
       (exp) => exp.id !== id
     )
-    this.setState({
-      ...prevState, experience: [newExp]
+    console.log(newExp)
+    this.setState(
+      { ...prevState, experience: [...newExp] }
+    )
+  }
+
+  //Education Handlers
+
+  handleEducationChange = (e, id) => {
+    const { name, value } = e.target;
+    const prevState = {...this.state}
+    const education = prevState.education.map((edu) => {
+      if(edu.id === id){
+        return  {...edu, [name]: value}
+      }
+      return edu;
     })
+    this.setState({
+      education
+    })
+  }
+
+  handleAddEducation = () => {
+    const prevState = this.state;
+    this.setState({
+      ...prevState,
+      education: [
+        ...prevState.education,
+        {
+          id: this.uid(),
+          university: "",
+          city: "",
+          degree: "",
+          subject: "",
+          from:"",
+          to: ""
+        }
+      ]
+    })
+  }
+
+  handleRemoveEducation = (id) => {
+    const prevState = this.state
+    const newEdu = prevState.education.filter(
+      (edu) => edu.id !== id
+    )
+    console.log(newEdu)
+    this.setState(
+      { ...prevState, education: [...newEdu] }
+    )
   }
 
   uid = () =>
@@ -101,6 +160,9 @@ class Main extends Component {
               experienceChange={this.handleExperienceChange}
               addExperience={this.handleAddExperience}
               removeExperience={this.handleRemoveExp}
+              educationChange={this.handleEducationChange}
+              addEducation={this.handleAddEducation}
+              removeEducation={this.handleRemoveEducation}
               firstName={firstName}
               lastName={lastName}
               role={role}

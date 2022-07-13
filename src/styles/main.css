@@ -1,11 +1,61 @@
 .row {
   display: flex;
+  background-color: lightgrey;
 }
 
-.prevCol {
+#prevCol {
   flex: 70%;
+  background-color: skyblue;
+  padding: 1rem;
 }
 
-.formCol {
+#formCol {
   flex: 30%;
+}
+
+.column {
+  width: 100%;
+}
+
+div {
+  overflow-wrap: anywhere;
+}
+
+hr {
+  width: 100%;
+}
+
+#personalInfoPrev {
+  width: 100%;
+}
+
+input, textarea {
+  width: 95%;
+}
+
+#prevInnerCol {
+  padding: 0 2rem 2rem 2rem;
+}
+
+#header {
+  text-align: center;
+  background-color: mediumpurple;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 3rem;
+  padding: 1rem;
 }

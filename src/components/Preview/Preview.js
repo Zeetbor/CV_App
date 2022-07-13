@@ -10,28 +10,24 @@ class Preview extends Component {
   // }
 
   render() {
-    const { inputChange, firstName, lastName, role, email, phone, city, summary, experience } = this.props;
+    const { firstName, lastName, role, email, phone, city, summary, experience, education } = this.props;
 
     return (
-      <div>
+      <div >
         <h2>{firstName} {lastName}</h2>
         <div className="row">
-        <div className="column">
-          <Experience experience={experience}/>
-          <Education />
-        </div>
-          <div className="column">
+          <div className="column" id="prevInnerCol">
 
             <PersonalInfo
-            inputChange={inputChange}
             role={role}
             city={city}
             email={email}
             phone={phone}
             summary={summary}
             />
+            <Experience experience={experience}/>
+            <Education education={education}/>
           </div>
-
         </div>
       </div>
     )

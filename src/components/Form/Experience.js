@@ -3,9 +3,6 @@ import ExperienceFormItem from "./ExperienceFormItem";
 
 
 class Experience extends Component {
-  constructor(props){
-    super(props)
-  }
 
   handleRemoveExp = (e) => {
     e.preventDefault();

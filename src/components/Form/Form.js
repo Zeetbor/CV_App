@@ -4,14 +4,13 @@ import Experience from "./Experience.js"
 import Education from "./Education.js"
 
 class Form extends Component {
-  constructor(props){
-    super(props);
-
-  };
+  // constructor(props){
+  //   super(props);
+  //
+  // };
   render() {
     const {
       inputChange,
-      experienceChange,
       firstName,
       lastName,
       email,
@@ -21,8 +20,12 @@ class Form extends Component {
       summary,
       experience,
       education,
+      experienceChange,
       addExperience,
-      removeExperience
+      removeExperience,
+      educationChange,
+      addEducation,
+      removeEducation
     } = this.props;
 
     return (
@@ -48,7 +51,10 @@ class Form extends Component {
           />
           <h2>Education</h2>
           <Education
-            education={this.education}
+            education={education}
+            educationChange={educationChange}
+            addEducation={addEducation}
+            removeEducation={removeEducation}
           />
         </form>
         <button type="submit">Confirm</button>

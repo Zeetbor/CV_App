@@ -2,24 +2,30 @@ import React, {Component} from "react";
 import EducationFormItem from "./EducationFormItem";
 
 class Education extends Component {
-  constructor(){
-    super();
-    this.state = {
-      school: '',
-      degree: '',
-      grade: '',
-      startDate: '',
-      endDate: '',
-      grade: '',
-      education: [
 
-      ]
-    }
-  }
   render (){
+    const {
+      education,
+      educationChange,
+      addEducation,
+      removeEducation
+    } = this.props;
+
+    const educationItems = education.map((edu) => {
+      return <EducationFormItem
+        key={edu.id}
+        id={edu.id}
+        education={education}
+        educationChange={educationChange}
+        addEducation={addEducation}
+        removeEducation={removeEducation}
+      />
+    })
+
     return (
       <div>
-        <EducationFormItem />
+      {education.length > 0 ? educationItems : ""}
+      <button type="button" onClick={addEducation}>Add</button>
       </div>
     )
   }
